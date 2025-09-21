@@ -68,17 +68,17 @@ const Hero = () => {
       }
     })
 
-    // if(videoRef.current.readyState >= 2) {
-    //     tl.to(videoRef.current, {
-    //         currentTime: videoRef.current.duration,
-    //     });
-    // }
+    if(videoRef.current.readyState == 4) {
+        tl.to(videoRef.current, {
+            currentTime: videoRef.current.duration,
+        });
+    }
 
-    videoRef.current.onloadedmetadata = () => {
-      tl.to(videoRef.current, {
-        currentTime: videoRef.current.duration,
-      });
-    };
+    // videoRef.current.onloadedmetadata = () => {
+    //   tl.to(videoRef.current, {
+    //     currentTime: videoRef.current.duration,
+    //   });
+    // };
 
   }, []);
 

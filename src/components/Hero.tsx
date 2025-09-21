@@ -73,7 +73,6 @@ const Hero = () => {
     const handleMetadata = () => {
       tl.to(video, {
         currentTime: video.duration,
-        ease: "none",
       });
     };
 

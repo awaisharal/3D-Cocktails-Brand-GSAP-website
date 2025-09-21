@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -64,23 +64,32 @@ const Hero = () => {
         start: startValue,
         end: endValue,
         scrub: true,
-        pin: true
-      }
-    })
+        pin: true,
+      },
+    });
 
-    if(videoRef.current.readyState == 4) {
-        tl.to(videoRef.current, {
-            currentTime: videoRef.current.duration,
-        });
+    const video = videoRef.current;
+
+    const handleMetadata = () => {
+      tl.to(video, {
+        currentTime: video.duration,
+        ease: "none",
+      });
+    };
+
+    // ✅ Case 1: already loaded
+    if (video.readyState >= 2) {
+      handleMetadata();
+    } else {
+      // ✅ Case 2: wait until metadata loads
+      video.addEventListener("loadedmetadata", handleMetadata, { once: true });
     }
 
-    // videoRef.current.onloadedmetadata = () => {
-    //   tl.to(videoRef.current, {
-    //     currentTime: videoRef.current.duration,
-    //   });
-    // };
-
-  }, []);
+    // ✅ Cleanup to avoid memory leaks
+    return () => {
+      video.removeEventListener("loadedmetadata", handleMetadata);
+    };
+  }, [isMobile]);
 
   return (
     <>

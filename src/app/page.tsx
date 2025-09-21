@@ -4,6 +4,7 @@ import SplitText from "gsap/SplitText";
 import Navbar from "@/components/navbar";
 import Hero from "@/components/Hero";
 import Cocktails from "@/components/Cocktails";
+import About from "@/components/About";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Cocktails />
+      <About />
     </main>
   );
 }

@@ -43,13 +43,6 @@ const Menu = () => {
         tl
         .fromTo('#m-right-leaf', { x: 100 }, { x: 0, duration: 1, ease: 'power1.inOut' })
         .fromTo('#m-left-leaf', { x: -100 }, { x: 0, duration: 1, ease: 'power1.inOut' })
-        
-
-        // tl.fromTo("#m-left-leaf", {x: -50, y: -50}, {x: 100, y: -700, duration: 1, ease: 'power1.inOut'});
-        // tl.from("#m-right-leaf", {x: 50, y: 50}, {x: -100, y: 700, duration: 1, ease: 'power1.inOut'});
-        
-        // tl.from("#m-left-leaf", {x:100, duration: 1, ease: 'power1.inOut'});
-        
 
     }, [currentIndex]);
 
